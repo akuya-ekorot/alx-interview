@@ -11,8 +11,12 @@ def validUTF8(data: List[int]) -> bool:
     try:
         is_valid = True
         for i in range(len(data)):
+            if not is_valid:
+                return False
+
             if data[i] > 255:
                 return False
+
             if is_valid_one_byte(data[i]):
                 is_valid = is_valid and True
             elif is_valid_two_byte(data[i]):
